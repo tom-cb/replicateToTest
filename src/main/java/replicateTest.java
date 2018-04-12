@@ -36,7 +36,7 @@ public class replicateTest {
         Bucket bucket = cluster.openBucket("travel-sample");
 
         // Load a couple of docs and write them back
-        for(int i = 0; i < 5; i++) {
+        for(int i = 0; i < 1; i++) {
             JsonDocument doc = bucket.get("airline_1" + i);
             if (doc != null) {
                 bucket.upsert(doc, ReplicateTo.ONE);
