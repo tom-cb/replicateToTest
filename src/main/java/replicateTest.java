@@ -22,7 +22,7 @@ public class replicateTest {
                 "my_app",
                 new Configuration.SamplerConfiguration("const", 1),
                 new Configuration.ReporterConfiguration(
-                        true, "localhost", 5775, 1000, 10000)
+                        true, "172.17.0.2", 5775, 1000, 10000)
         ).getTracer();
 
 
@@ -30,7 +30,7 @@ public class replicateTest {
                 .tracer(tracer)
                 .build();
 
-        Cluster cluster = CouchbaseCluster.create(env, "127.0.0.1");
+        Cluster cluster = CouchbaseCluster.create(env, "172.17.0.3");
         cluster.authenticate("tom", "g0ne8ang");
 
         Bucket bucket = cluster.openBucket("travel-sample");
