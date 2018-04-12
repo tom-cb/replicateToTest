@@ -36,7 +36,7 @@ public class replicateTest {
         Bucket bucket = cluster.openBucket("travel-sample");
 
         // Load a couple of docs and write them back
-        for(int i = 0; i < 1; i++) {
+        for(int i = 0; i < 10; i++) {
             JsonDocument doc = bucket.get("airline_1" + i);
             if (doc != null) {
                 bucket.upsert(doc, ReplicateTo.ONE);
@@ -44,6 +44,8 @@ public class replicateTest {
         }
 
         Thread.sleep(TimeUnit.MINUTES.toMillis(1));
+
+
     }
 
 }
