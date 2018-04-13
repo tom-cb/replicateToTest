@@ -28,6 +28,7 @@ public class replicateTest {
 
         CouchbaseEnvironment env = DefaultCouchbaseEnvironment.builder()
                 .tracer(tracer)
+                .kvTimeout(5)
                 .build();
 
         Cluster cluster = CouchbaseCluster.create(env, "172.17.0.3");
