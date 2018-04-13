@@ -33,13 +33,15 @@ public class replicateTest {
         Cluster cluster = CouchbaseCluster.create(env, "172.17.0.3");
         cluster.authenticate("tom", "g0ne8ang");
 
-        Bucket bucket = cluster.openBucket("travel-sample");
+        Bucket bucket = cluster.openBucket("replicateTest");
 
         // Load a couple of docs and write them back
-        JsonDocument doc = bucket.get("airline_1");
+        JsonDocument doc = bucket.get("sampleDoc_5KB");
+        //System.out.println(doc);
 
         for(int i = 0; i < 10; i++) {
             if (doc != null) {
+                JsonDocument newDoc = JsonDocument.from(doc, "insertedDoc_" + i);
                 bucket.upsert(doc, ReplicateTo.ONE);
             }
         }
